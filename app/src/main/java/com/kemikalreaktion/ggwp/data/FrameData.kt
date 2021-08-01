@@ -1,7 +1,6 @@
 package com.kemikalreaktion.ggwp.data
 
 data class FrameData(
-    val character: String,
     val input: String,
     val damage: Int,
     val guard: Guard,
