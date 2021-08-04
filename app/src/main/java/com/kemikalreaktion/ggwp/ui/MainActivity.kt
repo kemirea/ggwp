@@ -1,11 +1,15 @@
 package com.kemikalreaktion.ggwp.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -16,12 +20,23 @@ import com.kemikalreaktion.ggwp.data.FrameData
 import com.kemikalreaktion.ggwp.data.MockData
 
 class MainActivity : ComponentActivity() {
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContent {
-            FrameDataCard(frameData = MockData.frameData)
+            Column {
+                FrameDataCard(frameData = MockData.frameData)
+                Button(
+                    onClick = { viewModel.query() }
+                ) {
+                    Text(
+                        text = "Test",
+                        Modifier.padding(start = 16.dp, end = 16.dp)
+                    )
+                }
+            }
         }
     }
 
@@ -44,7 +59,7 @@ class MainActivity : ComponentActivity() {
         Column {
             Text(text = character.name)
             Spacer(modifier = Modifier.height(5.dp))
-            for(move in character.frameData) {
+            for (move in character.frameData) {
                 FrameDataCard(frameData = move)
             }
 
