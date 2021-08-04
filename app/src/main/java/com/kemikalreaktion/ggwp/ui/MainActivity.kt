@@ -45,7 +45,7 @@ class MainActivity : ComponentActivity() {
         Column {
             Text(text = "Input: ${frameData.input}")
             Text(text = "Damage: ${frameData.damage}")
-            Text(text = "Guard: ${frameData.guard.name}")
+            Text(text = "Guard: ${frameData.guard}")
             Text(text = "Startup: ${frameData.startup}")
             Text(text = "Active: ${frameData.active}")
             Text(text = "Recovery: ${frameData.recovery}")
