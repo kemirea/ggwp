@@ -2,19 +2,15 @@ package com.kemikalreaktion.ggwp.ui
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.viewModelScope
 import com.kemikalreaktion.ggwp.data.DatabaseManager
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.kemikalreaktion.ggwp.data.FrameData
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val databaseManager = DatabaseManager()
 
-    fun query() {
-        viewModelScope.launch(Dispatchers.IO) {
-            databaseManager.refreshData()
-        }
-    }
+    val frameDataFlow: Flow<List<FrameData>> = flow { emit(databaseManager.fetchFrameData()) }
 
     override fun onCleared() {
         super.onCleared()
