@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.5.20'
+    id 'com.squareup.sqldelight'
 }
 
 android {
@@ -44,7 +45,14 @@ android {
     packagingOptions {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
+            exclude 'META-INF/*.kotlin_module'
         }
+    }
+}
+
+sqldelight {
+    GGWPDatabase {
+        packageName = 'com.kemikalreaktion.ggwp'
     }
 }
 
@@ -70,6 +78,10 @@ dependencies {
     implementation 'io.ktor:ktor-client-serialization:1.5.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1'
     implementation 'io.ktor:ktor-client-logging-jvm:1.5.0'
+
+    /* SqlDelight */
+    implementation "com.squareup.sqldelight:android-driver:1.5.0"
+    implementation "com.squareup.sqldelight:coroutines-extensions:1.5.0"
 
     /* Testing */
     testImplementation 'junit:junit:4.+'

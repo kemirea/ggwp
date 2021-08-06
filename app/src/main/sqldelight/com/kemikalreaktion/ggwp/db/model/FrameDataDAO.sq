@@ -1,0 +1,27 @@
+CREATE TABLE FrameDataDao (
+  chara TEXT NOT NULL,
+  input TEXT NOT NULL,
+  damage TEXT NOT NULL,
+  guard TEXT NOT NULL,
+  startup TEXT NOT NULL,
+  active TEXT NOT NULL,
+  recovery TEXT NOT NULL,
+  onBlock TEXT NOT NULL,
+  onHit TEXT NOT NULL,
+  name TEXT NOT NULL,
+  images TEXT NOT NULL
+);
+
+CREATE INDEX frameDataId ON FrameDataDao(chara, input);
+
+insertOrReplace:
+    INSERT OR REPLACE INTO FrameDataDao(chara, input, damage, guard, startup, active, recovery, onBlock, onHit, name, images)
+    VALUES ?;
+
+getFrameData:
+    SELECT FrameDataDao.*
+    FROM FrameDataDao;
+
+getCharacters:
+    SELECT DISTINCT chara
+    FROM FrameDataDao;
