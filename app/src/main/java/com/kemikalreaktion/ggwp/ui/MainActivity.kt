@@ -27,6 +27,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             FrameDataList(frameDataList = emptyList())
         }
+        viewModel.refreshData()
     }
 
     override fun onStart() {

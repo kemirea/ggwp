@@ -12,6 +12,7 @@ class MockData {
             recovery = "7",
             onBlock = "-1",
             onHit = "1",
+            name = ""
         )
 
         val character = Character(

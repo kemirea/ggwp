@@ -25,7 +25,7 @@ data class FrameData(
     val onHit: String,
     val url: String? = null,
     @SerialName("name")
-    val name: String? = null,
+    val name: String,
     @SerialName("images")
     val images: List<String> = emptyList(),
 )
